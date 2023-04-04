@@ -6,4 +6,4 @@ sexo (M/F) e salário. Faça um programa que calcule e mostre:
     c) A quantidade de mulheres na região;
     d) A idade e o sexo da pessoa que possui o menor salário;
 
-    Finalize a entrada de dados ao ser digitada uma idade negativa.
+Finalize a entrada de dados ao ser digitada uma idade negativa.

@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// -- ENUMS e STRUCTS --
 typedef enum sexo
 {
     MASCULINO = 'm',
@@ -88,34 +89,7 @@ habitante criar_habitante()
     return (habitante){idade, salario, sexo};
 }
 
-void atualizar_pesquisa(pesquisa *pesquisa_alvo, habitante novo_habitante)
-{
-    pesquisa pesquisa_atualizada = *pesquisa_alvo;
-
-    if (novo_habitante.idade < 0)
-        return; // pesquisa invalida
-
-    pesquisa_atualizada.total_habitantes++;
-
-    pesquisa_atualizada.salario_total += novo_habitante.salario; // atualizar salario total
-
-    if (pesquisa_atualizada.total_habitantes == 0 || pesquisa_atualizada.habitante_mais_novo.idade > novo_habitante.idade) // atualizar hab mais novo
-        pesquisa_atualizada.habitante_mais_novo = novo_habitante;
-
-    if (pesquisa_atualizada.total_habitantes == 0 || pesquisa_atualizada.habitante_mais_velho.idade < novo_habitante.idade) // atualizar hab mais velho
-        pesquisa_atualizada.habitante_mais_velho = novo_habitante;
-
-    if (pesquisa_atualizada.total_habitantes == 0 || pesquisa_atualizada.habitante_menor_salario.salario > novo_habitante.salario) // atualizar hab menor salario
-        pesquisa_atualizada.habitante_menor_salario = novo_habitante;
-
-    if (pesquisa_atualizada.total_habitantes != 0)
-        pesquisa_atualizada.media_salarial = pesquisa_atualizada.salario_total / pesquisa_atualizada.total_habitantes;
-
-    if (novo_habitante.sexo == FEMININO) // atualizar n mulheres
-        pesquisa_atualizada.quantidade_mulheres++;
-
-    *pesquisa_alvo = pesquisa_atualizada;
-}
+// -- PESQUISA --
 pesquisa criar_pesquisa()
 {
     pesquisa nova_pesquisa;

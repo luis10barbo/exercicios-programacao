@@ -108,7 +108,7 @@ pesquisa realizar_pesquisa()
 {
     pesquisa nova_pesquisa = criar_pesquisa();
 
-    while (1) // loop ate dar break;
+    while (1) // loop infinito ate dar break;
     {
         limpar_console();
 
@@ -120,7 +120,7 @@ pesquisa realizar_pesquisa()
         if (novo_habitante.idade < 0)                                   // aq vem a importancia de retornar a idade como -1 la na funcao criar_habitante
         {                                                               // dessa forma, da para eu saber q o novo_habitante nao é um valor valido
             printf("Idade negativa digitada, finalizando pesquisa.\n"); // impedindo de contar ele na pesquisa
-            break;
+            break;                                                      // parar loop
         }
 
         atualizar_pesquisa(&nova_pesquisa, novo_habitante); // ADICIONAR OS VALORES DO NOVO HABITANTE A PESQUISA
@@ -180,18 +180,6 @@ void exibir_resultados_pesquisa(pesquisa resultado_pesquisa)
 
 int main(void)
 {
-    /*
-    Foi feita uma pesquisa entre os habitantes de uma região. Foram coletados os dados de idade,
-    sexo (M/F) e salário. Faça um programa que calcule e mostre:
-
-    a) A média dos salários do grupo;
-    b) A maior e a menor idade do grupo;
-    c) A quantidade de mulheres na região;
-    d) A idade e o sexo da pessoa que possui o menor salário;
-
-    Finalize a entrada de dados ao ser digitada uma idade negativa.
-    */
-
     pesquisa resultado_pesquisa = realizar_pesquisa();
     exibir_resultados_pesquisa(resultado_pesquisa);
 

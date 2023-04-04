@@ -35,6 +35,20 @@ typedef struct pesquisa
     size_t total_habitantes;
 } pesquisa; // Para poder guardar informacoes da pesquisa em variaveis com tipo "pesquisa"
 
+// -- UTILIDADES DO SISTEMA --
+void limpar_console()
+{
+    // Criei um macro la em cima para substituir o __clear_system_call__ pelo "clear" do linux ou "cls" no windows
+    // precisei fazer isso pq to compilando o programa no linux, nem se preocupa com isso se vc so for usar windows
+    system(__clear_system_call__);
+}
+
+void pausar_programa()
+{
+    system(__system_call_pause__);
+}
+
+// -- HABITANTES --
 habitante criar_habitante()
 {
     int idade;
@@ -120,8 +134,7 @@ pesquisa realizar_pesquisa()
 
     while (1) // loop ate dar break;
     {
-        // Criei um macro la em cima para substituir o __clear_system_call__ pelo "clear" do linux ou "cls" no windows
-        system(__clear_system_call__);
+        limpar_console();
 
         if (nova_pesquisa.total_habitantes > 0)
             printf("Total habitantes entrevistados: %ld\n", nova_pesquisa.total_habitantes); // Mostrar esse texto apenas quando tiver mais que um habitante
@@ -142,9 +155,7 @@ pesquisa realizar_pesquisa()
 
 void exibir_resultados_pesquisa(pesquisa resultado_pesquisa)
 {
-    // Criei um macro la em cima para substituir o __clear_system_call__ pelo "clear" do linux ou "cls" no windows
-    // precisei fazer isso pq to compilando o programa no linux, nem se preocupa com isso se vc so for usar windows
-    system(__clear_system_call__);
+    limpar_console();
 
     printf("-- RESULTADOS PESQUISA -- \n");
     if (resultado_pesquisa.total_habitantes <= 0)
@@ -176,7 +187,8 @@ int main(void)
 
     pesquisa resultado_pesquisa = realizar_pesquisa();
     exibir_resultados_pesquisa(resultado_pesquisa);
-    system(__system_call_pause__);
+
+    pausar_programa();
 
     return 0;
 }
